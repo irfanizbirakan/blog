@@ -20,21 +20,21 @@ import { transformerFileName } from "./src/utils/transformers/fileName";
 import config from "./astro-paper.config";
 
 export default defineConfig({
-  site: config.site.url,
-  integrations: [
-    mdx(),
-    sitemap({
-      filter: page =>
-        config.features?.showArchives !== false || !page.endsWith("/archives/"),
-    }),
-  ],
-  i18n: {
-    locales: ["en"],
-    defaultLocale: "en",
-    routing: {
-      prefixDefaultLocale: false,
-    },
-  },
+  site: config.site.url,
+  integrations: [
+    mdx(),
+    sitemap({
+      filter: page =>
+        config.features?.showArchives !== false || !page.endsWith("/archives/"),
+    }),
+  ],
+  i18n: {
+    locales: ["tr"],
+    defaultLocale: "tr",
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
   markdown: {
     processor: unified({
       remarkPlugins: [
