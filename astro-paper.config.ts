@@ -1,45 +1,77 @@
-import { defineAstroPaperConfig } from "./src/types/config";
+import type { AstroPaperConfig } from "./src/types/config";
 
-export default defineAstroPaperConfig({
+const config: AstroPaperConfig = {
   site: {
-    url: "https://astro-paper.pages.dev/",
-    title: "AstroPaper",
-    description: "A minimal, responsive and SEO-friendly Astro blog theme.",
-    author: "Sat Naing",
-    profile: "https://satna.ing",
-    ogImage: "default-og.jpg",
-    lang: "en",
-    timezone: "Asia/Bangkok",
+    author: "İrfan İzbırakan",
+    desc: "Teknoloji, donanım, ESP32 ve DIY projeleri üzerine teknik notlar ve rehberler.",
+    title: "İzbırakan Atölye",
+    ogImage: "astropaper-og.jpg",
+    lang: "tr", 
+    timezone: "Europe/Istanbul", 
     dir: "ltr",
   },
   posts: {
-    perPage: 4,
+    perPage: 6, 
     perIndex: 4,
-    scheduledPostMargin: 15 * 60 * 1000,
   },
   features: {
     lightAndDarkMode: true,
     dynamicOgImage: true,
     showArchives: true,
     showBackButton: true,
-    editPost: {
-      enabled: true,
-      url: "https://github.com/satnaing/astro-paper/edit/main/",
-    },
+    editPost: { enabled: false },
     search: "pagefind",
   },
   socials: [
-    { name: "github",   url: "https://github.com/satnaing/astro-paper" },
-    { name: "x",        url: "https://x.com/username" },
-    { name: "linkedin", url: "https://www.linkedin.com/in/username/" },
-    { name: "mail",     url: "mailto:yourmail@gmail.com" },
+    {
+      name: "YouTube",
+      href: "https://youtube.com/@irfanizbirakan",
+      active: true, 
+    },
+    {
+      name: "Github",
+      href: "https://github.com/irfanizbirakan",
+      active: true,
+    },
+    {
+      name: "Instagram",
+      href: "https://instagram.com/irfanizbirakan",
+      active: true,
+    },
+    {
+      name: "TikTok",
+      href: "https://tiktok.com/@irfanizbirakan",
+      active: true,
+    },
+    {
+      name: "Mail",
+      href: "mailto:iletisim@irfanizbirakan.com", 
+      active: true,
+    },
+    {
+      name: "X",
+      href: "https://twitter.com",
+      active: false, 
+    },
+    {
+      name: "LinkedIn",
+      href: "https://linkedin.com",
+      active: false,
+    },
+    {
+      name: "Twitch",
+      href: "https://twitch.tv",
+      active: false,
+    }
   ],
   shareLinks: [
-    { name: "whatsapp", url: "https://wa.me/?text=" },
-    { name: "facebook", url: "https://www.facebook.com/sharer.php?u=" },
-    { name: "x",        url: "https://x.com/intent/post?url=" },
-    { name: "telegram", url: "https://t.me/share/url?url=" },
-    { name: "pinterest", url: "https://pinterest.com/pin/create/button/?url=" },
-    { name: "mail",     url: "mailto:?subject=See%20this%20post&body=" },
+    { name: "WhatsApp", active: true },
+    { name: "Telegram", active: true },
+    { name: "X", active: true },
+    { name: "Facebook", active: false },
+    { name: "LinkedIn", active: false },
+    { name: "Mail", active: true },
   ],
-});
+};
+
+export default config;
