@@ -1,0 +1,107 @@
+---
+import Layout from '../components/Layout.astro';
+---
+
+<Layout
+  title="İletişim"
+  description="Benimle iletişime geçmek, işbirliği yapmak veya projeler hakkında konuşmak için ulaşabileceğiniz kanallar."
+>
+  <section class="section">
+    <div class="container">
+      
+      <div class="contact-head">
+         <!--h2>           Aşağıdaki adresten bana yazabilirsiniz</h2>
+        
+        <br/>
+        <p class="muted" style="margin-bottom: 2.5rem; margin-top: 0;">
+          irfanizbirakan@hotmail.com
+        </p-->
+        <br/>
+        
+      </div>
+
+      <div class="contact-grid">
+        
+        <a href="mailto:irfanizbirakan@hotmail.com" class="contact-card">
+          <img src="/img/emailsend.png" alt="E-posta" class="contact-icon" />
+          <span class="contact-text">E-posta gönder: <br/> irfanizbirakan@hotmail.com</span>
+        </a>
+
+        <a href="#" id="copy-email-btn" data-email="irfanizbirakan@hotmail.com" class="contact-card">
+          <img src="/img/emailcopy.png" alt="Kopyala" class="contact-icon" />
+          <span class="contact-text">E-posta adresini kopyala: <br/> irfanizbirakan@hotmail.com</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Kutuların ızgara (grid) yapısı - mobilde tek, masaüstünde yan yana dizecek şekilde ayarlandı */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  /* Kutu tasarımı */
+  .contact-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 1.5rem;
+    background-color: rgba(150, 150, 150, 0.05); /* Temanın kendi rengine uyumlu hafif saydamlık */
+    border: 1px solid rgba(150, 150, 150, 0.15);
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+
+  /* Fare üzerine gelme (hover) efekti */
+  .contact-card:hover {
+    transform: translateY(-5px);
+    background-color: rgba(150, 150, 150, 0.1);
+  }
+
+  /* İkon boyutu ve yerleşimi */
+  .contact-icon {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+  }
+
+  /* Yazı tipi ağırlığı */
+  .contact-text {
+    font-weight: 500;
+    font-size: 1.1rem;
+    text-align: center;
+  }
+</style>
+
+<script>
+  // Butonu ID'si ile buluyoruz
+  const copyBtn = document.getElementById('copy-email-btn');
+
+  // Eğer sayfamızda bu buton varsa, tıklama olayını dinliyoruz
+  if (copyBtn) {
+    copyBtn.addEventListener('click', (e) => {
+      // href="#" olduğu için sayfanın en üste sıçramasını engelliyoruz
+      e.preventDefault(); 
+      
+      // Butonun içindeki data-email bilgisini çekiyoruz
+      const email = copyBtn.getAttribute('data-email');
+      
+      // Panoya kopyalama işlemi
+      navigator.clipboard.writeText(email).then(() => {
+        alert("E-posta adresi panoya kopyalandı: " + email);
+      }).catch(err => {
+        console.error('Kopyalama işlemi başarısız oldu: ', err);
+      });
+    });
+  }
+</script>

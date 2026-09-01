@@ -1,0 +1,119 @@
+---
+import Layout from '../components/Layout.astro';
+---
+
+<Layout
+  title="İletişim"
+  description="Benimle iletişime geçmek, işbirliği yapmak veya projeler hakkında konuşmak için ulaşabileceğiniz kanallar."
+>
+  <section class="section">
+    <div class="container">
+      
+      <div class="contact-head">
+         <!-- > <p class="eyebrow">İletişim</p> -->
+        
+        <h2>Şu Yutubırlara Diyorum;</h2>
+        <h2>Ulaşmak Neden Bu Kadar Zor?</h2>
+        <br/>
+        <p class="muted" style="margin-bottom: 2.5rem; margin-top: 0;">
+          Bu işe başlamadan önce benim de çok kez sorduğum bir soruydu bu. Takip ettiğim tüm isimler her yerde gizliyordu iletişim kanallarını. Burunları havada olduklarından diye düşünmüştüm. Bu işe ilk başladığımda "Ben onlardan olmayacağım" dedim ve uzun bir süre boyunca gelen her mesajı, her maili, her aramayı cevaplamaya çalıştım.
+<br/>
+<br/>
+
+Ta ki sürdürülemez bir hale gelene kadar. Günün 24 saati de uğraşsam bile mümkün olmayacak seviyeye gelmişti. Okuduğum bir mesajı cevaplamadan geçmek de hiç iyi hissettirmiyor açıkçası.
+<br/>
+<br/>
+
+Bu yüzden, hiç istemesem de, ben de aynı şekilde süreci zorlaştırmak zorunda kaldım.
+<br/>
+<br/>
+
+Dilerim affedebilirsiniz. Sevgiler saygılar.
+        </p>
+        <br/>
+        <br/>
+
+
+
+        <h2 style="margin-top: 2.5rem; margin-bottom: 0.5rem; font-size: 1.5rem;">Lütfen İletişim Kurmak İsteme Amacınızı Seçiniz</h2>
+        <br/>
+
+        <!-- p class="muted" style="max-width: 60ch; margin-bottom: 3rem;">
+          İz Bırakan Ticaret çatısı altındaki sponsorluk, inceleme ve ortak proje teklifleri için ilgili platformu seçerek doğrudan iletişime geçebilirsiniz.
+        </p-->
+      </div>
+
+      <div class="contact-grid">
+        
+        <a href="mailto:ornek@email.com" class="contact-card">
+          <img src="/img/email-icon.png" alt="E-posta" class="contact-icon" />
+          <span class="contact-text">Marka İş Birliği</span>
+        </a>
+
+        <a href="https://youtube.com/@irfanizbirakan" target="_blank" rel="noopener noreferrer" class="contact-card">
+          <img src="/img/youtube-icon.png" alt="YouTube" class="contact-icon" />
+          <span class="contact-text">Bir Fikrim Var</span>
+        </a>
+
+        <a href="https://youtube.com/@benceanlat" target="_blank" rel="noopener noreferrer" class="contact-card">
+          <img src="/img/youtube-icon.png" alt="Bence Anlat" class="contact-icon" />
+          <span class="contact-text">Yardım Lazım</span>
+        </a>
+
+        <a href="https://instagram.com/kullaniciadi" target="_blank" rel="noopener noreferrer" class="contact-card">
+          <img src="/img/instagram-icon.png" alt="Instagram" class="contact-icon" />
+          <span class="contact-text">Diğer</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Kutuların ızgara (grid) yapısı - mobilde tek, masaüstünde yan yana dizecek şekilde ayarlandı */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  /* Kutu tasarımı */
+  .contact-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 1.5rem;
+    background-color: rgba(150, 150, 150, 0.05); /* Temanın kendi rengine uyumlu hafif saydamlık */
+    border: 1px solid rgba(150, 150, 150, 0.15);
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+
+  /* Fare üzerine gelme (hover) efekti */
+  .contact-card:hover {
+    transform: translateY(-5px);
+    background-color: rgba(150, 150, 150, 0.1);
+  }
+
+  /* İkon boyutu ve yerleşimi */
+  .contact-icon {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+    /* Eğer ikonlar siyahsa ve tema dark mode ise, ikonları görünür yapmak için 
+       gerekirse css filter uygulayabilirsin: filter: invert(1); */
+  }
+
+  /* Yazı tipi ağırlığı */
+  .contact-text {
+    font-weight: 500;
+    font-size: 1.1rem;
+    text-align: center;
+  }
+</style>

@@ -1,30 +1,52 @@
 ---
-import type { HTMLAttributes } from "astro/types";
-import Socials from "./Socials.astro";
-import { useTranslations } from "@/i18n";
-
-type Props = {
-  noMarginTop?: boolean;
-} & HTMLAttributes<"footer">;
-
-const { noMarginTop = false, class: className, ...attrs } = Astro.props;
-
-const t = useTranslations(Astro.currentLocale);
-const currentYear = new Date().getFullYear();
+import { site, withBase } from '../data/site';
 ---
 
-<footer
-  class:list={["app-layout", { "mt-auto": !noMarginTop }, className]}
-  {...attrs}
->
-  <div
-    class="border-border flex flex-col items-center justify-between border-t py-6 sm:flex-row-reverse sm:py-4"
-  >
-    <Socials />
-    <div class="my-2 flex flex-col items-center whitespace-nowrap sm:flex-row">
-      <span>{t.footer.copyright} &#169; {currentYear}</span>
-      <span class="hidden sm:inline">&nbsp;|&nbsp;</span>
-      <span>{t.footer.allRightsReserved}</span>
-    </div>
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <!-- İlk satır (Sayfa linkleri) -->
+    <ul class="footer-links nav-links">
+      <li><a href={withBase('/')}>Anasayfa</a></li>
+      <li><a href={withBase('/work')}>Ben Kimim</a></li>
+      <li><a href={withBase('/blog')}>Yazılarım</a></li>
+      <li><a href={withBase('/eposta')}>İletişim</a></li>
+    </ul>
+
+    <!-- İkinci satır (Sosyal medya linkleri) -->
+    <ul class="footer-links social-links">
+      {Object.values(site.socials).map((s) => (
+        <li>
+          <a href={s.url} target={s.url.startsWith('http') ? '_blank' : undefined} rel="noopener">{s.label}</a>
+        </li>
+      ))}
+    </ul>
+
+    <p>© Tüm Sakları Haklıdır   ·   
+      
+      {new Date().getFullYear()} <br/>{site.author.name} · {site.author.location}</p>
   </div>
 </footer>
+
+<style>
+  /* Sadece ilk satırdaki linklerin arasını açar */
+  .nav-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5rem; /* Elemanların arasındaki boşluk (örneğin 32px) */
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0; /* Alt satırla olan mesafe */
+  }
+
+  /* İkinci satır (sosyal linkler) için boşluk ayarı */
+  .social-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+  }
+</style>
