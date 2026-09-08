@@ -75,5 +75,82 @@ const imageUrl = withBase(image);
       <slot />
     </main>
     <Footer />
+
+    <!-- KOD BLOKLARI İÇİN KOPYALA BUTONU VE SCROLL STİLLERİ -->
+    <style is:global>
+      .copy-code-btn {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background-color: #2d2d2d;
+        color: #e0e0e0;
+        border: 1px solid #444;
+        padding: 6px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 500;
+        opacity: 0.8;
+        transition: all 0.2s ease;
+        z-index: 10;
+      }
+
+      .copy-code-btn:hover {
+        opacity: 1;
+        background-color: #444;
+      }
+
+      .copy-code-btn.copied {
+        background-color: #10b981; 
+        color: white;
+        border-color: #10b981;
+      }
+    </style>
+
+    <!-- KOD BLOKLARI İÇİN JAVASCRIPT KURALI -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Sayfadaki tüm <pre> etiketlerini (kod bloklarını) bul
+        const codeBlocks = document.querySelectorAll('pre');
+
+        codeBlocks.forEach((block) => {
+          // Kutuyu oluştur
+          const wrapper = document.createElement('div');
+          wrapper.style.position = 'relative';
+          wrapper.style.marginBottom = '2rem';
+          
+          // Kod bloğunu kutunun içine al
+          block.parentNode.insertBefore(wrapper, block);
+          wrapper.appendChild(block);
+          
+          // Scroll özelliklerini ekle
+          block.style.maxHeight = '400px'; 
+          block.style.overflowY = 'auto';
+          block.style.margin = '0';
+          
+          // Butonu oluştur ve ekle
+          const copyBtn = document.createElement('button');
+          copyBtn.innerText = 'Kopyala';
+          copyBtn.className = 'copy-code-btn';
+          
+          wrapper.appendChild(copyBtn);
+          
+          // Kopyalama işlevini ekle
+          copyBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(block.innerText).then(() => {
+              copyBtn.innerText = 'Kopyalandı!';
+              copyBtn.classList.add('copied');
+              
+              setTimeout(() => {
+                copyBtn.innerText = 'Kopyala';
+                copyBtn.classList.remove('copied');
+              }, 2000);
+            }).catch(err => {
+              console.error('Kopyalama işlemi başarısız oldu: ', err);
+            });
+          });
+        });
+      });
+    </script>
   </body>
 </html>

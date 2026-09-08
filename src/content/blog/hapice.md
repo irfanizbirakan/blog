@@ -1,7 +1,7 @@
 ---
 title: "Hapiçe – Otomatik İlaç Makinesi"
 subtitle: "İlaçlarını almayı unutanlar için bir 'Hatırlatıcı Cihaz' tasarlıyoruz."
-date: 2026-09-01
+date: 2026-07-02
 tags: ["esp32", "elektronik", "3d-baski", "arduino", "diy"]
 category: "Kendin Yap"
 description: "İlaçları düzenli kullanmayı kolaylaştıran, ESP32 tabanlı otomatik ilaç dispenseri Hapiçe'nin adım adım yapım rehberi ve kodları."
@@ -34,90 +34,32 @@ Neyse, daha fazlasını videolarda konuşuruz. Hadi şu cihazın yapımına geç
 
 ---
 
+
+
 ## 1. Kullanılan Ürünler ve Parçalar
 
-İlk olarak şu parçaları edinmeniz gerekiyor. Alttaki liste ögelerine tıkladığınızda sistem sizi gereken parçanın satın alma sayfasına yönlendiriyor:
+İlk olarak şu parçaları edinmeniz gerekiyor. Alttaki liste ögelerine tıkladığınızda sistem sizi gereken parçanın satın alma sayfasına yönlendiriyor. Stokta yoksa veya başka bir yerden satın almak isterseniz bu da gayet mümkün elbette.
 
-*   [ESP32](https://www.robo90.com/esp32-wroom-32-wifi-ve-bluetooth-gelistirme-karti)
-*   [Ekran](https://www.robo90.com/144-inch-oled-arduino-tft-lcd-ekran-modulu-128x128)
-*   [Motor](https://www.robo90.com/28-byj-48-step-motor-ve-uln2003-step-motor-surucu-seti)
-*   [Buzzer](https://www.robo90.com/buzzer-aktif-5v)
-*   [Buton](https://www.robo90.com/pbs-33b-push-buton-oval-sari-mantar-buton)
-*   [Dişi - Erkek Jumper](https://www.robo90.com/40li-ayrilabilen-disi-erkek-jumper-kablo-20cm-arduino-uyumlu)
-*   [Dişi - Dişi Jumper](https://www.robo90.com/40li-ayrilabilen-disi-disi-jumper-kablo-20cm-arduino-uyum)
-*   [Mini Breadboard](https://www.robo90.com/mini-breadboard-170-pin-yesil)
-
+*   <a href="https://www.robo90.com/esp32-wroom-32-wifi-ve-bluetooth-gelistirme-karti" target="_blank">ESP32</a>
+*   <a href="https://www.robo90.com/144-inch-oled-arduino-tft-lcd-ekran-modulu-128x128" target="_blank">Ekran</a>
+*   <a href="https://www.robo90.com/28-byj-48-step-motor-ve-uln2003-step-motor-surucu-seti" target="_blank">Motor</a>
+*   <a href="https://www.robo90.com/buzzer-aktif-5v" target="_blank">Buzzer</a>
+*   <a href="https://www.robo90.com/pbs-33b-push-buton-oval-sari-mantar-buton" target="_blank">Buton</a>
+*   <a href="https://www.robo90.com/40li-ayrilabilen-disi-erkek-jumper-kablo-20cm-arduino-uyumlu" target="_blank">Dişi - Erkek Jumper</a>
+*   <a href="https://www.robo90.com/40li-ayrilabilen-disi-disi-jumper-kablo-20cm-arduino-uyum" target="_blank">Dişi - Dişi Jumper</a>
+*   <a href="https://www.robo90.com/mini-breadboard-170-pin-yesil" target="_blank">Mini Breadboard</a>
 
 <img src="https://robo90.com/Data/EditorFiles/tasarim/robo90-logo.svg" alt="Robo90 Logo" width="300" />
 
 ---
 
-İlk olarak şu parçaları edinmeniz gerekiyor. Alttaki liste ögelerine tıkladığınızda sistem sizi gereken parçanın satın alma sayfasına yönlendiriyor:
-
-<ul>
-  <li>
-    <a href="https://www.robo90.com/esp32-wroom-32-wifi-ve-bluetooth-gelistirme-karti" class="hover-link" target="_blank">
-      ESP32
-      <img src="RESİM_LİNKİ_BURAYA" class="hover-img" />
-    </a>
-  </li>
-  
-  <li>
-    <a href="https://www.robo90.com/144-inch-oled-arduino-tft-lcd-ekran-modulu-128x128" class="hover-link" target="_blank">
-      Ekran
-      <img src="RESİM_LİNKİ_BURAYA" class="hover-img" />
-    </a>
-  </li>
-  
-  <li>
-    <a href="https://www.robo90.com/28-byj-48-step-motor-ve-uln2003-step-motor-surucu-seti" class="hover-link" target="_blank">
-      Motor
-      <img src="https://www.robo90.com/28-byj-48-step-motor-ve-uln2003-step-motor-surucu-seti-step-motor-robo90-robo90-40740-61-O.jpg" class="hover-img" />
-    </a>
-  </li>
-  
-  <li>
-    <a href="https://www.robo90.com/buzzer-aktif-5v" class="hover-link" target="_blank">
-      Buzzer
-      <img src="RESİM_LİNKİ_BURAYA" class="hover-img" />
-    </a>
-  </li>
-  
-  <li>
-    <a href="https://www.robo90.com/pbs-33b-push-buton-oval-sari-mantar-buton" class="hover-link" target="_blank">
-      Buton
-      <img src="RESİM_LİNKİ_BURAYA" class="hover-img" />
-    </a>
-  </li>
-  
-  <li>
-    <a href="https://www.robo90.com/40li-ayrilabilen-disi-erkek-jumper-kablo-20cm-arduino-uyumlu" class="hover-link" target="_blank">
-      Dişi - Erkek Jumper
-      <img src="RESİM_LİNKİ_BURAYA" class="hover-img" />
-    </a>
-  </li>
-  
-  <li>
-    <a href="https://www.robo90.com/40li-ayrilabilen-disi-disi-jumper-kablo-20cm-arduino-uyum" class="hover-link" target="_blank">
-      Dişi - Dişi Jumper
-      <img src="RESİM_LİNKİ_BURAYA" class="hover-img" />
-    </a>
-  </li>
-  
-  <li>
-    <a href="https://www.robo90.com/mini-breadboard-170-pin-yesil" class="hover-link" target="_blank">
-      Mini Breadboard
-      <img src="RESİM_LİNKİ_BURAYA" class="hover-img" />
-    </a>
-  </li>
-</ul>
 
 
 ## 2. 3D Baskı Dosyaları
 
 Şimdi sırada 3D baskı işi var. Aşağıdaki linkteki `.zip` dosyasında basılması gereken tüm parçalar mevcut.
 
-👉 [**Hapiçe 3D Baskı Dosyalarını İndir**](/dosyalar/hapice-baski.zip)
+👉 [**Hapiçe 3D Baskı Dosyalarını İndir**](/dosyalar/Hapice-Baski-Dosyalari.zip)
 
 ---
 
@@ -859,39 +801,7 @@ void checkWeeklyReport() {
     weeklyReportSent = false;
   }
 }
+```
 
 
 
-
-
-<style>
-  /* Linklerin genel ayarı */
-  .hover-link {
-    position: relative;
-    display: inline-block;
-    text-decoration: underline;
-    font-weight: 500;
-  }
-  
-  /* Gizli olarak bekleyecek olan resim ayarı */
-  .hover-link .hover-img {
-    visibility: hidden;
-    opacity: 0;
-    position: absolute;
-    bottom: 130%; /* Resim yazının biraz üstünde belirir */
-    left: 50%;
-    transform: translateX(-50%); /* Tam ortalar */
-    width: 150px; /* Resmin genişliğini buradan ayarlayabilirsiniz */
-    border-radius: 8px; /* Köşeleri hafif yuvarlatır */
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.3); /* Şık bir gölge ekler */
-    transition: opacity 0.2s ease-in-out; /* Yumuşak geçiş animasyonu */
-    z-index: 100;
-    pointer-events: none; /* Resmin üzerine gelindiğinde titremeyi engeller */
-  }
-
-  /* Fare linkin üzerine gelince resmi göster */
-  .hover-link:hover .hover-img {
-    visibility: visible;
-    opacity: 1;
-  }
-</style>
